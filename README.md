@@ -41,3 +41,12 @@ To Invoke (example): aws lambda invoke --function-name first-service-dev-isPalin
      --payload '{"input1":"Able was i ere i saw elba"}' output.txt
 
 To see result from AWS: more output.txt
+
+To Test in AWS, go to Services->Lambda->Functions, and click first-service-dev-isPalindrome
+Click 1stPalindromeTest->Configure test events, Select 'Edit saved test events' or 'Create new test event'
+Enter the following:
+{
+    "1":"Able was I ere I saw Elba"
+}
+Click Save, then click Test
+Click log details to see result
