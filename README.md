@@ -25,6 +25,26 @@ https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html
 Using AWS Lambda with the AWS Command Line Interface
 https://docs.aws.amazon.com/lambda/latest/dg/with-userapp.html
 
+KOTLIN HANDLER CLASS:
+The Kotlin class imports the AWS classes
+
+import com.amazonaws.services.lambda.runtime.Context
+import com.amazonaws.services.lambda.runtime.RequestHandler
+
+and needs a Handler with a signature in the form of:
+
+class Handler:RequestHandler<Map<String, Any>, ApiGatewayResponse>,
+that overrides the handleRequest function:
+  override fun handleRequest(input:Map<String, Any>, context:Context):ApiGatewayResponse,
+  where the ApiGatewayREsponse is a class defined as:
+
+    class ApiGatewayResponse(
+      val statusCode: Int = 200,
+      var body: String? = null,
+      val headers: Map<String, String>? = Collections.emptyMap(),
+      val isBase64Encoded: Boolean = false
+    )
+
 To Configure to AWS CLI: aws configure
     Use this to:
     1) set the region
